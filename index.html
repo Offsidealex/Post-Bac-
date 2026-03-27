@@ -12,10 +12,19 @@
     .container { max-width: 1600px; margin: 0 auto; overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 3px 12px rgba(0,0,0,0.12); border-radius: 10px; overflow: hidden; font-size: 0.78em; }
     th { padding: 8px 6px; text-align: center; vertical-align: middle; line-height: 1.3; }
-    .th-volet   { background: #1a252f; color: white; font-size: 0.95em; }
-    .th-section { background: #2c3e50; color: #ecf0f1; font-size: 0.82em; }
-    .th-sub     { background: #34495e; color: #bdc3c7; font-size: 0.75em; font-weight: normal; }
-    .th-eleve   { background: #1a252f; color: white; text-align: left; padding-left: 12px; }
+    .th-eleve      { background: #1a252f; color: white; text-align: left; padding-left: 12px; }
+    /* Volets 1&2 — bleu */
+    .th-volet-12   { background: #154360; color: white; font-size: 0.95em; }
+    .th-section-12 { background: #1a5276; color: #d6eaf8; font-size: 0.82em; }
+    .th-sub-12     { background: #2471a3; color: #d6eaf8; font-size: 0.75em; font-weight: normal; }
+    /* LVA — violet */
+    .th-volet-lva  { background: #4a235a; color: white; font-size: 0.95em; }
+    .th-section-lva{ background: #6c3483; color: #e8daef; font-size: 0.82em; }
+    .th-sub-lva    { background: #9b59b6; color: #f5eef8; font-size: 0.75em; font-weight: normal; }
+    /* Volet 3 — vert */
+    .th-volet-3    { background: #145a32; color: white; font-size: 0.95em; }
+    .th-section-3  { background: #1e8449; color: #d5f5e3; font-size: 0.82em; }
+    .th-sub-3      { background: #27ae60; color: #eafaf1; font-size: 0.75em; font-weight: normal; }
     td { padding: 9px 6px; text-align: center; border: 1px solid #ecf0f1; vertical-align: middle; }
     td.eleve-cell { text-align: left; padding-left: 12px; min-width: 150px; }
     .nom   { font-weight: bold; }
@@ -229,29 +238,29 @@ function subCell(blk, scoreLabels) {
 let html = `
 <thead>
   <tr>
-    <th rowspan="3" class="th-volet th-eleve">Élève</th>
-    <th colspan="5" class="th-volet">Volets 1 &amp; 2</th>
-    <th colspan="1" class="th-volet">LVA</th>
-    <th colspan="3" class="th-volet">Volet 3</th>
+    <th rowspan="3" class="th-eleve">Élève</th>
+    <th colspan="5" class="th-volet-12">Volets 1 &amp; 2</th>
+    <th colspan="1" class="th-volet-lva">LVA</th>
+    <th colspan="3" class="th-volet-3">Volet 3</th>
   </tr>
   <tr>
-    <th colspan="3" class="th-section">Compétences interdisciplinaires (50%)</th>
-    <th colspan="2" class="th-section">Parcours d'orientation (20%)</th>
-    <th class="th-section">LVA</th>
-    <th class="th-section">Compétences professionnelles (30%)</th>
-    <th class="th-section">Avis conseil de classe</th>
-    <th class="th-section">Cohérence parcours</th>
+    <th colspan="3" class="th-section-12">Compétences interdisciplinaires (50%)</th>
+    <th colspan="2" class="th-section-12">Parcours d'orientation (20%)</th>
+    <th class="th-section-lva">LVA</th>
+    <th class="th-section-3">Compétences professionnelles (30%)</th>
+    <th class="th-section-3">Avis conseil de classe</th>
+    <th class="th-section-3">Cohérence parcours</th>
   </tr>
   <tr>
-    <th class="th-sub">Oral &amp; Écrit<br>(25%)</th>
-    <th class="th-sub">Maths &amp; Sciences<br>(25%)</th>
-    <th class="th-sub">Méthode<br>(50%)</th>
-    <th class="th-sub">Parcours Avenir<br>(50%)</th>
-    <th class="th-sub">Insertion pro<br>(50%)</th>
-    <th class="th-sub">Niveaux par compétence</th>
-    <th class="th-sub">Compétences spécifiques<br>Bac pro</th>
-    <th class="th-sub">Orientation</th>
-    <th class="th-sub">Évaluation</th>
+    <th class="th-sub-12">Oral &amp; Écrit<br>(25%)</th>
+    <th class="th-sub-12">Maths &amp; Sciences<br>(25%)</th>
+    <th class="th-sub-12">Méthode<br>(50%)</th>
+    <th class="th-sub-12">Parcours Avenir<br>(50%)</th>
+    <th class="th-sub-12">Insertion pro<br>(50%)</th>
+    <th class="th-sub-lva">Niveaux par compétence</th>
+    <th class="th-sub-3">Compétences spécifiques<br>Bac pro</th>
+    <th class="th-sub-3">Orientation</th>
+    <th class="th-sub-3">Évaluation</th>
   </tr>
 </thead>
 <tbody>`;
