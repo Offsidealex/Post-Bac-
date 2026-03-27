@@ -29,6 +29,10 @@
     .th-volet-3    { background: #145a32; color: white; font-size: 0.95em; }
     .th-section-3  { background: #1e8449; color: #d5f5e3; font-size: 0.82em; }
     .th-sub-3      { background: #27ae60; color: #eafaf1; font-size: 0.75em; font-weight: normal; }
+    /* Avis & Cohérence — orange */
+    .th-volet-ac   { background: #784212; color: white; font-size: 0.95em; }
+    .th-section-ac { background: #a04000; color: #fdebd0; font-size: 0.82em; }
+    .th-sub-ac     { background: #d35400; color: #fef0e7; font-size: 0.75em; font-weight: normal; }
     td { padding: 9px 6px; text-align: center; border: 1px solid #ecf0f1; vertical-align: middle; }
     td.eleve-cell { text-align: left; padding-left: 12px; min-width: 150px; }
     .nom   { font-weight: bold; }
@@ -36,6 +40,12 @@
     .bts-label { display: block; font-size: 0.72em; color: #888; margin-top: 2px; line-height: 1.3; }
     tr:nth-child(odd)  td { background-color: #fafafa; }
     tr:nth-child(even) td { background-color: #f4f6f7; }
+    /* Couleurs de fond par colonne (override odd/even) */
+    td.col-v1  { background-color: #d6eaf8 !important; }
+    td.col-v2  { background-color: #d6eeff !important; }
+    td.col-lva { background-color: #f0e6f6 !important; }
+    td.col-v3  { background-color: #d5f5e3 !important; }
+    td.col-ac  { background-color: #fdebd0 !important; }
     tr.student-row td { border-bottom: 2px solid #dce0e1; }
     .badge { display: inline-block; padding: 4px 8px; border-radius: 5px; font-weight: bold; font-size: 0.8em; }
     .valide    { background: #27ae60; color: white; }
@@ -235,8 +245,8 @@ function scoreStr(labels, scores) {
   return labels.map((l,i) => `${l}:${scores[i]}`).join(' · ');
 }
 
-function subCell(blk, scoreLabels) {
-  return `<td>${badge(blk.v)}<span class="scores">${scoreStr(scoreLabels, blk.s)}</span></td>`;
+function subCell(blk, scoreLabels, colClass) {
+  return `<td class="${colClass}">${badge(blk.v)}<span class="scores">${scoreStr(scoreLabels, blk.s)}</span></td>`;
 }
 
 let html = `
@@ -246,15 +256,16 @@ let html = `
     <th colspan="3" class="th-volet-1">Volet 1</th>
     <th colspan="2" class="th-volet-2">Volet 2</th>
     <th colspan="1" class="th-volet-lva">LVA</th>
-    <th colspan="3" class="th-volet-3">Volet 3</th>
+    <th colspan="1" class="th-volet-3">Volet 3</th>
+    <th colspan="2" class="th-volet-ac">Avis &amp; Cohérence</th>
   </tr>
   <tr>
     <th colspan="3" class="th-section-1">Compétences interdisciplinaires (50%)</th>
     <th colspan="2" class="th-section-2">Parcours d'orientation (20%)</th>
     <th class="th-section-lva">LVA</th>
     <th class="th-section-3">Compétences professionnelles (30%)</th>
-    <th class="th-section-3">Avis conseil de classe</th>
-    <th class="th-section-3">Cohérence parcours</th>
+    <th class="th-section-ac">Avis conseil de classe</th>
+    <th class="th-section-ac">Cohérence parcours</th>
   </tr>
   <tr>
     <th class="th-sub-1">Oral &amp; Écrit<br>(25%)</th>
@@ -264,8 +275,8 @@ let html = `
     <th class="th-sub-2">Insertion pro<br>(50%)</th>
     <th class="th-sub-lva">Niveaux par compétence</th>
     <th class="th-sub-3">Compétences spécifiques<br>Bac pro</th>
-    <th class="th-sub-3">Orientation</th>
-    <th class="th-sub-3">Évaluation</th>
+    <th class="th-sub-ac">Orientation</th>
+    <th class="th-sub-ac">Évaluation</th>
   </tr>
 </thead>
 <tbody>`;
@@ -273,15 +284,15 @@ let html = `
 STUDENTS.forEach(s => {
   html += `<tr class="student-row">
     <td class="eleve-cell"><span class="nom">${s.nom} <span class="prenom">${s.prenom}</span></span><span class="bts-label">${s.bts}</span></td>
-    ${subCell(s.oral,      SCORE_LABELS_V)}
-    ${subCell(s.maths,     SCORE_LABELS_M)}
-    ${subCell(s.methode,   SCORE_LABELS_T)}
-    ${subCell(s.avenir,    SCORE_LABELS_A)}
-    ${subCell(s.insertion, SCORE_LABELS_I)}
-    <td>${lvCell(s.lva)}</td>
-    ${subCell(s.compro, SCORE_LABELS_P)}
-    <td>${avisHtml(s.avis)}</td>
-    <td>${cohHtml(s.coh)}</td>
+    ${subCell(s.oral,      SCORE_LABELS_V, "col-v1")}
+    ${subCell(s.maths,     SCORE_LABELS_M, "col-v1")}
+    ${subCell(s.methode,   SCORE_LABELS_T, "col-v1")}
+    ${subCell(s.avenir,    SCORE_LABELS_A, "col-v2")}
+    ${subCell(s.insertion, SCORE_LABELS_I, "col-v2")}
+    <td class="col-lva">${lvCell(s.lva)}</td>
+    ${subCell(s.compro, SCORE_LABELS_P, "col-v3")}
+    <td class="col-ac">${avisHtml(s.avis)}</td>
+    <td class="col-ac">${cohHtml(s.coh)}</td>
   </tr>`;
 });
 
