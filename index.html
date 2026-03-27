@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthèse Parcoursup — BTS TRPM — LP Denis Diderot</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #ecf0f1;
+      color: #2c3e50;
+      margin: 0;
+      padding: 24px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 4px;
+      font-size: 1.6em;
+    }
+    .subtitle {
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 28px;
+      font-size: 0.9em;
+    }
+    .container {
+      max-width: 1500px;
+      margin: 0 auto;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 0.82em;
+    }
+    /* Header rows */
+    th {
+      padding: 9px 7px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 1.3;
+    }
+    .th-volet {
+      background: #1a252f;
+      color: white;
+      font-size: 1em;
+      letter-spacing: 0.03em;
+    }
+    .th-section {
+      background: #2c3e50;
+      color: #ecf0f1;
+      font-size: 0.85em;
+    }
+    .th-sub {
+      background: #34495e;
+      color: #bdc3c7;
+      font-size: 0.78em;
+      font-weight: normal;
+    }
+    .th-eleve {
+      background: #1a252f;
+      color: white;
+      text-align: left;
+      padding-left: 14px;
+    }
+    /* Data cells */
+    td {
+      padding: 10px 7px;
+      text-align: center;
+      border: 1px solid #ecf0f1;
+      vertical-align: middle;
+    }
+    td.eleve-cell {
+      text-align: left;
+      padding-left: 14px;
+      min-width: 160px;
+    }
+    .nom { font-weight: bold; font-size: 1em; }
+    .prenom { font-weight: normal; color: #555; }
+    .bts-label {
+      display: block;
+      font-size: 0.75em;
+      color: #888;
+      margin-top: 3px;
+      line-height: 1.3;
+    }
+    tr:nth-child(odd) td { background-color: #fafafa; }
+    tr:nth-child(even) td { background-color: #f4f6f7; }
+
+    /* Validation badges */
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 0.82em;
+      letter-spacing: 0.02em;
+    }
+    .valide   { background: #27ae60; color: white; }
+    .nonvalide { background: #e74c3c; color: white; }
+
+    /* Score detail */
+    .scores {
+      display: block;
+      font-size: 0.72em;
+      color: #aaa;
+      margin-top: 4px;
+    }
+
+    /* LVA cell */
+    .lva-grid {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 2px 6px;
+      text-align: left;
+      font-size: 0.78em;
+    }
+    .lva-key { color: #888; }
+    .lva-val {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+    .lv-a2  { background: #e67e22; color: white; }
+    .lv-b1  { background: #2ecc71; color: white; }
+    .lv-b1p { background: #27ae60; color: white; }
+    .lv-b2  { background: #16a085; color: white; }
+    .lv-ne  { background: #bdc3c7; color: #555; font-weight: normal; }
+
+    /* Avis */
+    .avis-positif { color: #27ae60; font-weight: bold; }
+    .avis-neutre  { color: #e67e22; font-weight: bold; }
+    .avis-negatif { color: #e74c3c; font-weight: bold; }
+
+    /* Coherence */
+    .forte { color: #2980b9; font-weight: bold; }
+
+    /* Separator between student rows */
+    tr.student-row td { border-bottom: 2px solid #dce0e1; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Synthèse Parcoursup — Bac Pro → BTS</h1>
+  <p class="subtitle">LP Lycée des Métiers Denis Diderot &mdash; TRPM &mdash; Année 2025-2026</p>
+
+  <table>
+    <thead>
+      <!-- Ligne 1 : Volets -->
+      <tr>
+        <th rowspan="3" class="th-volet th-eleve">Élève</th>
+        <th colspan="5" class="th-volet">Volets 1 &amp; 2</th>
+        <th colspan="2" class="th-volet">LVA / LVB</th>
+        <th colspan="3" class="th-volet">Volet 3</th>
+      </tr>
+      <!-- Ligne 2 : Sections -->
+      <tr>
+        <th colspan="3" class="th-section">Compétences interdisciplinaires (50%)</th>
+        <th colspan="2" class="th-section">Parcours d'orientation (20%)</th>
+        <th class="th-section">LVA</th>
+        <th class="th-section">LVB</th>
+        <th class="th-section">Compétences<br>professionnelles (30%)</th>
+        <th class="th-section">Avis conseil<br>de classe</th>
+        <th class="th-section">Cohérence<br>parcours</th>
+      </tr>
+      <!-- Ligne 3 : Sous-volets -->
+      <tr>
+        <th class="th-sub">Oral &amp; Écrit<br>(25%)</th>
+        <th class="th-sub">Maths &amp;<br>Sciences (25%)</th>
+        <th class="th-sub">Méthode<br>(50%)</th>
+        <th class="th-sub">Parcours<br>Avenir (50%)</th>
+        <th class="th-sub">Insertion<br>pro (50%)</th>
+        <th class="th-sub">Niveaux par<br>compétence</th>
+        <th class="th-sub">Niveaux par<br>compétence</th>
+        <th class="th-sub">Compétences<br>spécifiques Bac pro</th>
+        <th class="th-sub">Orientation</th>
+        <th class="th-sub">Évaluation</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- ══════════════════════════════════════════ -->
+      <!-- ARAPOVIC Ervin                             -->
+      <!-- ══════════════════════════════════════════ -->
+      <tr class="student-row">
+        <td class="eleve-cell">
+          <span class="nom">ARAPOVIC <span class="prenom">Ervin</span></span>
+          <span class="bts-label">BTS Conception des Produits Industriels</span>
+        </td>
+
+        <!-- Oral & Écrit -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Écrit: 2 &bull; Oral: 3 &bull; Lecture: 3 &bull; Compréhension: 3</span>
+        </td>
+        <!-- Maths & Sciences -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Représentations: 2 &bull; Démarche: 3 &bull; Docs: 3 &bull; Synthèse: 2</span>
+        </td>
+        <!-- Méthode -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Planifier: 3 &bull; Mémoriser: 2 &bull; Méthodes: 3 &bull; Autonomie: 2</span>
+        </td>
+        <!-- Parcours Avenir -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Éco/Pro: 2 &bull; Métiers: 3 &bull; Engagement: 3 &bull; Démarches: 2</span>
+        </td>
+        <!-- Insertion pro -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Stages: 3 &bull; Outils: 3 &bull; PFMP: 3 &bull; Adaptation: 3</span>
+        </td>
+
+        <!-- LVA -->
+        <td>
+          <div class="lva-grid">
+            <span class="lva-key">Compréhension écrite</span> <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Production écrite</span>     <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Compréhension orale</span>   <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Prod. orale continu</span>   <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Prod. orale interaction</span><span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Médiation</span>             <span class="lva-val lv-a2">A2</span>
+          </div>
+        </td>
+        <!-- LVB -->
+        <td>
+          <div class="lva-grid">
+            <span class="lva-key">Compréhension écrite</span> <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Production écrite</span>     <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Compréhension orale</span>   <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Prod. orale continu</span>   <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Prod. orale interaction</span><span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Médiation</span>             <span class="lva-val lv-ne">N/É</span>
+          </div>
+        </td>
+
+        <!-- Compétences pro -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">C10.4: 2 &bull; C12.3: 4 &bull; C2.3: 2 &bull; C5.6: 2 &bull; C6.2: 3 &bull; C7.2: 4</span>
+        </td>
+        <!-- Avis -->
+        <td><span class="avis-positif">Positif</span></td>
+        <!-- Cohérence -->
+        <td><span class="forte">Forte cohérence</span></td>
+      </tr>
+
+      <!-- ══════════════════════════════════════════ -->
+      <!-- BELEY Jules                                -->
+      <!-- ══════════════════════════════════════════ -->
+      <tr class="student-row">
+        <td class="eleve-cell">
+          <span class="nom">BELEY <span class="prenom">Jules</span></span>
+          <span class="bts-label">BTS Conception et Industrialisation en Microtechniques</span>
+        </td>
+
+        <!-- Oral & Écrit -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Écrit: 3 &bull; Oral: 3 &bull; Lecture: 3 &bull; Compréhension: 3</span>
+        </td>
+        <!-- Maths & Sciences -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Représentations: 3 &bull; Démarche: 4 &bull; Docs: 4 &bull; Synthèse: 4</span>
+        </td>
+        <!-- Méthode -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Planifier: 4 &bull; Mémoriser: 3 &bull; Méthodes: 3 &bull; Autonomie: 3</span>
+        </td>
+        <!-- Parcours Avenir -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Éco/Pro: 2 &bull; Métiers: 3 &bull; Engagement: 3 &bull; Démarches: 3</span>
+        </td>
+        <!-- Insertion pro -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Stages: 4 &bull; Outils: 3 &bull; PFMP: 4 &bull; Adaptation: 3</span>
+        </td>
+
+        <!-- LVA -->
+        <td>
+          <div class="lva-grid">
+            <span class="lva-key">Compréhension écrite</span> <span class="lva-val lv-b1">B1</span>
+            <span class="lva-key">Production écrite</span>     <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Compréhension orale</span>   <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Prod. orale continu</span>   <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Prod. orale interaction</span><span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Médiation</span>             <span class="lva-val lv-a2">A2</span>
+          </div>
+        </td>
+        <!-- LVB -->
+        <td>
+          <div class="lva-grid">
+            <span class="lva-key">Compréhension écrite</span> <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Production écrite</span>     <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Compréhension orale</span>   <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Prod. orale continu</span>   <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Prod. orale interaction</span><span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Médiation</span>             <span class="lva-val lv-ne">N/É</span>
+          </div>
+        </td>
+
+        <!-- Compétences pro -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">C10.4: 4 &bull; C12.3: 4 &bull; C2.3: 3 &bull; C5.6: 4 &bull; C6.2: 4 &bull; C7.2: 4</span>
+        </td>
+        <!-- Avis -->
+        <td><span class="avis-positif">Positif</span></td>
+        <!-- Cohérence -->
+        <td><span class="forte">Forte cohérence</span></td>
+      </tr>
+
+      <!-- ══════════════════════════════════════════ -->
+      <!-- BOUDRIJ Marwane                            -->
+      <!-- ══════════════════════════════════════════ -->
+      <tr class="student-row">
+        <td class="eleve-cell">
+          <span class="nom">BOUDRIJ <span class="prenom">Marwane</span></span>
+          <span class="bts-label">BTS Métiers de l'Esthétique, Cosmétique &amp; Parfumerie — 1re année commune</span>
+        </td>
+
+        <!-- Oral & Écrit -->
+        <td>
+          <span class="badge nonvalide">NON VALIDÉ</span>
+          <span class="scores">Écrit: 2 &bull; Oral: 2 &bull; Lecture: 2 &bull; Compréhension: 2</span>
+        </td>
+        <!-- Maths & Sciences -->
+        <td>
+          <span class="badge nonvalide">NON VALIDÉ</span>
+          <span class="scores">Représentations: 1 &bull; Démarche: 1 &bull; Docs: 1 &bull; Synthèse: 1</span>
+        </td>
+        <!-- Méthode -->
+        <td>
+          <span class="badge nonvalide">NON VALIDÉ</span>
+          <span class="scores">Planifier: 2 &bull; Mémoriser: 2 &bull; Méthodes: 2 &bull; Autonomie: 2</span>
+        </td>
+        <!-- Parcours Avenir -->
+        <td>
+          <span class="badge nonvalide">NON VALIDÉ</span>
+          <span class="scores">Éco/Pro: 1 &bull; Métiers: 2 &bull; Engagement: 2 &bull; Démarches: 2</span>
+        </td>
+        <!-- Insertion pro -->
+        <td>
+          <span class="badge valide">VALIDÉ</span>
+          <span class="scores">Stages: 3 &bull; Outils: 3 &bull; PFMP: 3 &bull; Adaptation: 3</span>
+        </td>
+
+        <!-- LVA -->
+        <td>
+          <div class="lva-grid">
+            <span class="lva-key">Compréhension écrite</span> <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Production écrite</span>     <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Compréhension orale</span>   <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Prod. orale continu</span>   <span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Prod. orale interaction</span><span class="lva-val lv-a2">A2</span>
+            <span class="lva-key">Médiation</span>             <span class="lva-val lv-a2">A2</span>
+          </div>
+        </td>
+        <!-- LVB -->
+        <td>
+          <div class="lva-grid">
+            <span class="lva-key">Compréhension écrite</span> <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Production écrite</span>     <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Compréhension orale</span>   <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Prod. orale continu</span>   <span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Prod. orale interaction</span><span class="lva-val lv-ne">N/É</span>
+            <span class="lva-key">Médiation</span>             <span class="lva-val lv-ne">N/É</span>
+          </div>
+        </td>
+
+        <!-- Compétences pro -->
+        <td>
+          <span class="badge nonvalide">NON VALIDÉ</span>
+          <span class="scores">C10.4: 1 &bull; C12.3: 3 &bull; C2.3: 2 &bull; C5.6: 1 &bull; C6.2: 1 &bull; C7.2: 2</span>
+        </td>
+        <!-- Avis -->
+        <td><span class="avis-neutre">Pas d'avis</span></td>
+        <!-- Cohérence -->
+        <td><span class="forte">Forte cohérence</span></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <p style="text-align:right; font-size:0.75em; color:#aaa; margin-top:10px;">
+    Généré le 27/03/2026 &mdash; LP Denis Diderot
+  </p>
+</div>
+</body>
+</html>
