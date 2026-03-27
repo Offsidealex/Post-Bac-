@@ -46,6 +46,12 @@
     td.col-lva { background-color: #f0e6f6 !important; }
     td.col-v3  { background-color: #d5f5e3 !important; }
     td.col-ac  { background-color: #fdebd0 !important; }
+    /* Séparateurs verticaux entre volets */
+    th.th-volet-2, th.th-section-2, th.th-sub-2,
+    th.th-volet-lva, th.th-section-lva, th.th-sub-lva,
+    th.th-volet-3, th.th-section-3, th.th-sub-3,
+    th.th-volet-ac, th.th-section-ac, th.th-sub-ac,
+    td.sep { border-left: 3px solid #1a252f !important; }
     tr.student-row td { border-bottom: 2px solid #dce0e1; }
     .badge { display: inline-block; padding: 4px 8px; border-radius: 5px; font-weight: bold; font-size: 0.8em; }
     .valide    { background: #27ae60; color: white; }
@@ -287,11 +293,11 @@ STUDENTS.forEach(s => {
     ${subCell(s.oral,      SCORE_LABELS_V, "col-v1")}
     ${subCell(s.maths,     SCORE_LABELS_M, "col-v1")}
     ${subCell(s.methode,   SCORE_LABELS_T, "col-v1")}
-    ${subCell(s.avenir,    SCORE_LABELS_A, "col-v2")}
+    ${subCell(s.avenir,    SCORE_LABELS_A, "col-v2 sep")}
     ${subCell(s.insertion, SCORE_LABELS_I, "col-v2")}
-    <td class="col-lva">${lvCell(s.lva)}</td>
-    ${subCell(s.compro, SCORE_LABELS_P, "col-v3")}
-    <td class="col-ac">${avisHtml(s.avis)}</td>
+    <td class="col-lva sep">${lvCell(s.lva)}</td>
+    ${subCell(s.compro, SCORE_LABELS_P, "col-v3 sep")}
+    <td class="col-ac sep">${avisHtml(s.avis)}</td>
     <td class="col-ac">${cohHtml(s.coh)}</td>
   </tr>`;
 });
