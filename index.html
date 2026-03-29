@@ -289,7 +289,7 @@ let html = `
 
 STUDENTS.forEach(s => {
   html += `<tr class="student-row">
-    <td class="eleve-cell"><span class="nom">${s.nom} <span class="prenom">${s.prenom}</span></span><span class="bts-label">${s.bts}</span></td>
+    <td class="eleve-cell"><span class="nom" style="color:${s.avis==='positif'?'#27ae60':s.avis==='neutre'?'#e74c3c':'inherit'}">${s.nom} <span class="prenom" style="color:inherit">${s.prenom}</span></span><span class="bts-label">${s.bts}</span></td>
     ${subCell(s.oral,      SCORE_LABELS_V, "col-v1")}
     ${subCell(s.maths,     SCORE_LABELS_M, "col-v1")}
     ${subCell(s.methode,   SCORE_LABELS_T, "col-v1")}
